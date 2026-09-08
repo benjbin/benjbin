@@ -1,0 +1,28 @@
+{
+  "name": "crypto-research-dashboard",
+  "version": "1.0.0",
+  "description": "Research-only crypto analysis dashboard triggered by TradingView webhooks. Never places trades.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dry-run": "node src/server.js --dry-run",
+    "test:webhook": "node scripts/test-webhook.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "crypto",
+    "research",
+    "openai",
+    "tradingview",
+    "educational"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "openai": "^4.86.2"
+  }
+}

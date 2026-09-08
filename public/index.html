@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crypto Research Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="banner" role="status">
+      Research only — no trades are executed.
+    </div>
+
+    <header class="top">
+      <div>
+        <p class="eyebrow">AI Crypto Research Desk</p>
+        <h1>Analysis inbox</h1>
+        <p class="lede">
+          Alert-triggered research for human review. Verify every figure against
+          your own sources before deciding.
+        </p>
+      </div>
+      <div class="meta" id="healthMeta">Loading…</div>
+    </header>
+
+    <main class="layout">
+      <aside class="list-panel">
+        <div class="panel-head">
+          <h2>Analyses</h2>
+          <button type="button" id="refreshBtn" class="ghost">Refresh</button>
+        </div>
+        <ul id="analysisList" class="analysis-list"></ul>
+        <p id="emptyList" class="empty hidden">
+          No analyses yet. Point a TradingView alert at
+          <code>POST /webhook</code> or run
+          <code>npm run test:webhook</code>.
+        </p>
+      </aside>
+
+      <section class="detail-panel" id="detailPanel">
+        <p class="empty" id="detailEmpty">Select an analysis to inspect.</p>
+        <div id="detailContent" class="hidden">
+          <div class="detail-header">
+            <div>
+              <h2 id="detailTitle">—</h2>
+              <p id="detailSub" class="muted"></p>
+            </div>
+            <span id="verdictBadge" class="badge">—</span>
+          </div>
+
+          <div class="grid-meta" id="alertMeta"></div>
+
+          <details open>
+            <summary>1 · Scanner</summary>
+            <pre id="outScanner" class="output"></pre>
+          </details>
+          <details open>
+            <summary>2 · Technicals</summary>
+            <pre id="outTechnical" class="output"></pre>
+          </details>
+          <details open>
+            <summary>3 · Research</summary>
+            <pre id="outResearch" class="output"></pre>
+          </details>
+          <details open>
+            <summary>4 · Risk</summary>
+            <pre id="outRisk" class="output"></pre>
+          </details>
+
+          <div class="review-box">
+            <h3>Human review</h3>
+            <p class="muted">
+              Your decision is recorded locally. Nothing is sent to an exchange.
+            </p>
+            <label for="decisionSelect">My decision</label>
+            <select id="decisionSelect">
+              <option value="no action">no action</option>
+              <option value="more research">more research</option>
+              <option value="my own decision, my responsibility">
+                my own decision, my responsibility
+              </option>
+            </select>
+            <label for="notesInput">Notes</label>
+            <textarea
+              id="notesInput"
+              rows="4"
+              placeholder="Numbers verified? What is still missing?"
+            ></textarea>
+            <button type="button" id="saveReviewBtn">Save review</button>
+            <p id="reviewStatus" class="muted" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
